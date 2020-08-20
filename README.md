@@ -1,5 +1,5 @@
-# Hapoalim-Vertx-Assignment
-Creates a vertx server that exposes an api to count valid tags for html.
+# Vert.x Microservice
+Creates a Vert.x server that exposes an api to count valid tags for html.
 
 The following command using cURL is a good example of how to use the api:
 
