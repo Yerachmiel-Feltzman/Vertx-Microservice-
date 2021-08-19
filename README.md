@@ -16,7 +16,6 @@ And then the response would be:
 
 The server is built using [Vert.x](https://vertx.io/) framework and is written in Java.
 
-
-
+Developed for a job assignment. 
 
 
