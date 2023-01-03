@@ -18,8 +18,6 @@ import static Utils.CountTags.countValidTagsHtmlString;
 
 public class ApiServerClass extends AbstractVerticle {
 
-    // TODO: update all names to not tutorial names!!!!
-
     @Override
     public void start(Future<Void> fut) {
         /**
@@ -47,11 +45,8 @@ public class ApiServerClass extends AbstractVerticle {
 
         // first of all there is a need to explicitly create a body handler
         router.route("/api*").handler(BodyHandler.create());
-        // and then create post method
         router.post("/api/count-valid-tags").handler(this::returnValidTagsCount);
 
-
-        // Create the HTTP server and pass the "accept" method to the request handler.
         vertx
                 .createHttpServer()
                 .requestHandler(router::accept)
@@ -90,14 +85,11 @@ public class ApiServerClass extends AbstractVerticle {
 
             final String html = json.getValue("html").toString();
 
-            // calculate valid tags
             int validTagsCount = countValidTagsHtmlString(html);
 
-            // put in format to respond
             final Map<String, Integer> validTagsJson = new HashMap<>();
             validTagsJson.put("validTags", validTagsCount);
 
-            // respond
             routingContext.response()
                     .putHeader("content-type", "application/json; charset=utf-8")
                     .end(Json.encodePrettily(validTagsJson));
